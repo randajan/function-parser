@@ -1,0 +1,35 @@
+{
+  "name": "@randajan/function-parser",
+  "version": "0.0.1",
+  "description": "A lightweight library for converting functions to strings and reconstructing functions from strings in JavaScript.",
+  "repository": "randajan/function-parser",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@randajan/simple-lib": "^2.3.2"
+  },
+  "devDependencies": {},
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "webdev",
+    "tool"
+  ],
+  "homepage": "https://github.com/randajan/function-parser",
+  "bugs": {
+    "url": "https://github.com/randajan/function-parser/issues"
+  },
+  "author": {
+    "name": "Jan Randa",
+    "email": "jnranda@gmail.com",
+    "url": "https://www.linkedin.com/in/randajan/"
+  }
+}

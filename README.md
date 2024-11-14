@@ -2,7 +2,7 @@
 
 [![NPM](https://img.shields.io/npm/v/@randajan/function-parser.svg)](https://www.npmjs.com/package/@randajan/function-parser) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-A lightweight library for converting functions to strings and reconstructing functions from strings in JavaScript.
+Effortlessly convert between functions and strings with fnToStr and strToFn. Serialize functions into minimal arrow notation or transform string code into callable functions. Perfect for dynamic JavaScript environments where function manipulation is key.
 
 ## Install
 

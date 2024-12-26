@@ -1,10 +1,23 @@
 import { split } from "./_tools";
 import { parseArgs } from "./arguments";
 
-const fromStr = str=>{
+const fromStr = (str, injectScope)=>{
     const f = split(str);
-    return new Function(parseArgs(f[0]), f[1]);
-}
+    const args = parseArgs(f[0]);
+    const body = f[1];
+    const origin = new Function(args, body);
+
+    if (!injectScope) { return origin; }
+
+    const keys = Object.keys(injectScope);
+    const vals = Object.values(injectScope);
+
+
+    const injected = new Function([...keys, ...args], body);
+    const binded = (...a)=>injected(...vals, ...a);
+
+    return Object.defineProperty(binded, "toString", _=>origin.toString());
+}   
 
 const fromAny = (any, type="string")=>{
     let body;
@@ -22,14 +35,14 @@ const fromAny = (any, type="string")=>{
     return new Function(`return ${body}`);
 }
 
-export const anyToFn = any=>{
+export const anyToFn = (any, injectScope)=>{
     const type = typeof any;
-    return (type !== "string" || any.startsWith("'")) ? fromAny(any, type) : fromStr(any);
+    return (type !== "string" || any.startsWith("'")) ? fromAny(any, type) : fromStr(any, injectScope);
 }
 
-export const strToFn = str=>{
+export const strToFn = (str, injectScope)=>{
     const t = typeof str;
     if (t !== "string") { throw Error("Stringify function - not a string"); }
 
-    return fromStr(str);
+    return fromStr(str, injectScope);
 }

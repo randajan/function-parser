@@ -5,7 +5,7 @@ import { fnToStr, strToFn, anyToFn } from "../../dist/index.js";
 // Testovací pole pro funkce fnToStr a strToFn
 const tests = [
     // fnToStr úspěšné případy
-    { exe: () => fnToStr(() => "test"), shouldThrow: false, expected: '()=>"test"' },
+    { exe: () => fnToStr(() => "test", ), shouldThrow: false, expected: '()=>"test"' },
     { exe: () => fnToStr(function foo() { return "bar"; }), shouldThrow: false, expected: '()=>"bar"' },
     { exe: () => fnToStr(function foobar(bar) { return { foo: bar }; }), shouldThrow: false, expected: "bar=>({ foo: bar })" },
     { exe: () => fnToStr(function bar(foo, bar) { console.log(foo, bar); return foo + bar; }), shouldThrow: false, expected: "(foo, bar)=>{console.log(foo, bar); return foo + bar;}" },
@@ -18,6 +18,7 @@ const tests = [
     { exe: () => strToFn("()=>'bar'")(), shouldThrow: false, expected: 'bar' },
     { exe: () => strToFn("bar=>({foo:bar})")("example"), shouldThrow: false, expected: { foo: "example" } },
     { exe: () => strToFn("(foo, bar)=>{ console.log(foo, bar); return foo + bar }")(2, 3), shouldThrow: false, expected: 5 },
+    { exe: () => strToFn("_=>foo", {foo:"bar"})(), shouldThrow:false, expected: "bar" },
 
     // strToFn chybové případy
     { exe: () => strToFn(42), shouldThrow: true, expected: "Stringify function - not a string" },
@@ -38,7 +39,7 @@ function runTests() {
                 console.error(`Test ${index + 1} failed: Expected error but got result`, result);
             } else {
                 const isEqual = JSON.stringify(result) === JSON.stringify(expected);
-                console.log(`Test ${index + 1}:`, isEqual ? "Passed" : `Failed - Expected ${expected} but got ${result}`);
+                console.log(`Test ${index + 1}:`, isEqual ? "Passed" : `Failed - Expected ${JSON.stringify(expected)} but got ${JSON.stringify(result)}`);
             }
         } catch (error) {
             if (shouldThrow) {

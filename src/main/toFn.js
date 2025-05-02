@@ -16,7 +16,7 @@ const fromStr = (str, injectScope)=>{
     const injected = new Function([...keys, ...args], body);
     const binded = (...a)=>injected(...vals, ...a);
 
-    return Object.defineProperty(binded, "toString", _=>origin.toString());
+    return Object.defineProperty(binded, "toString", { value:_=>origin.toString() });
 }   
 
 const fromAny = (any, type="string")=>{

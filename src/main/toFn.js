@@ -35,9 +35,10 @@ const fromAny = (any, type="string")=>{
     return new Function(`return ${body}`);
 }
 
+const _quoted = /^['"`]/;
 export const anyToFn = (any, injectScope)=>{
     const type = typeof any;
-    return (type !== "string" || any.startsWith("'")) ? fromAny(any, type) : fromStr(any, injectScope);
+    return (type !== "string" || _quoted.test(any)) ? fromAny(any, type) : fromStr(any, injectScope);
 }
 
 export const strToFn = (str, injectScope)=>{

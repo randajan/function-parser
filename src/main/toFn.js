@@ -27,8 +27,12 @@ const fromAny = (any, type="string")=>{
     else if (type === "symbol") { throw Error("Creating function - symbol is not supported"); }
     else if (any instanceof Date) { body = `new Date('${any}')`; }
     else if (type === "object") {
+        let isMap = any instanceof Map;
+        if (isMap) { any = Object.fromEntries(any); }
         try { body = `(${JSON.stringify(any)})`; }
         catch(e) { throw Error("Creating function - object replication failed"); }
+        if (isMap) { body = `new Map(Object.entries(${body}))`; console.log(body); }
+        
     }
     
     if (!body) { throw Error("Creating function - unknown input"); }

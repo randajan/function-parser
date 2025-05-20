@@ -112,6 +112,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.16.17.tgz#c5a1a4bfe1b57f0c3e61b29883525c6da3e5c091"
   integrity sha512-y+EHuSchhL7FjHgvQL/0fnnFmO4T1bhvWANX6gcnqTjtnKWbTvUMCpGnv2+t+31d7RzyEAYAd4u2fnIhHL6N/Q==
 
+"@randajan/regex-parser@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@randajan/regex-parser/-/regex-parser-0.0.2.tgz#e76e668930dc0e685285ae03357c96350d2cae3e"
+  integrity sha512-kyHlwMVUixp0IyshY4/FZeqgJzO+z4m1todwzGO91Db9QXheaf7b/u3v1eXAisCGnTdY1WPlHa+PtMg24VjJQw==
+
 "@randajan/simple-lib@^2.3.2":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@randajan/simple-lib/-/simple-lib-2.3.2.tgz#7d6598ddc7a0598655007237444603cf6cfa49d6"

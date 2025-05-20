@@ -11,6 +11,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@randajan/regex-parser": "^0.0.2",
     "@randajan/simple-lib": "^2.3.2"
   },
   "devDependencies": {},

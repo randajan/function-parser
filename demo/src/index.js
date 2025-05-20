@@ -52,5 +52,10 @@ function runTests() {
     });
 }
 
+
 // Spuštění testovací funkce
 runTests();
+
+const fn = anyToFn(/[a-zA-Z]+/g);
+
+console.log(fnToStr(fn));

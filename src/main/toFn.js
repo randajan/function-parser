@@ -1,3 +1,4 @@
+import { rgxToStr } from "@randajan/regex-parser";
 import { split } from "./_tools";
 import { parseArgs } from "./arguments";
 
@@ -26,6 +27,7 @@ const fromAny = (any, type="string")=>{
     if (type === "string" || type === "number" || type === "boolean" || type === "bigint") { body = `${any}`; }
     else if (type === "symbol") { throw Error("Creating function - symbol is not supported"); }
     else if (any instanceof Date) { body = `new Date('${any}')`; }
+    else if (any instanceof RegExp) { body = rgxToStr(any); }
     else if (type === "object") {
         let isMap = any instanceof Map;
         if (isMap) { any = Object.fromEntries(any); }

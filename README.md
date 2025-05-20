@@ -91,12 +91,17 @@ anyToFn(true)(); // Returns true
 anyToFn(new Date("2024-01-01"))(); // Returns a Date object representing 2024-01-01
 anyToFn({ foo: "bar" })(); // Returns { foo: "bar" }
 anyToFn("(a, b) => a + b")(3, 4); // Returns 7
+anyToFn(/[a-zA-Z]+/g).test("ABC"); // Returns true
 ```
 
 **Errors:**
 - `"Creating function - symbol is not supported"`: Raised if `any` is of type `symbol`.
 - `"Creating function - object replication failed"`: Raised if `any` is an object that cannot be stringified (e.g., contains circular references).
 - `"Creating function - unknown input"`: Raised if `any` is of an unsupported or unrecognized type.
+
+# Dependencies
+
+- @randajan/regex-parser
 
 Happy hacking
 
